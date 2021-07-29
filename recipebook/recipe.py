@@ -3,10 +3,6 @@ from recipebook.data import Data
 class Recipe:
 
     def __init__(self):
-        self.get_scored_recipes = []
-
-
-    def __init__(self):
         self.__data_dict = Data().get_data()
         self.__recipes_scored = self.__create_recipe_scored_table()
 
