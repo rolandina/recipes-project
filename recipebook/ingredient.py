@@ -13,7 +13,7 @@ class Ingredient:
 
         ingredient_popularities = ingredients.copy()
         ingredient_popularities['polularity'] = items[['ingredient_id','recipe_id']].groupby(by = ['ingredient_id']).count()['recipe_id'].to_list()
-        ingredient_popularities['is_popular'] = [True if i >1 else False for i in ingredient_popularities['polularity']]
+        ingredient_popularities['is_popular'] = [1 if i >1 else 0 for i in ingredient_popularities['polularity']]
         return ingredient_popularities
 
     def get_with_popularities(self):
