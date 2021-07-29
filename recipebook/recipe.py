@@ -1,16 +1,16 @@
 from recipebook.data import Data
 
-class Recipe:
+class Recipe(Data):
 
     def __init__(self):
-        self.__data_dict = Data().get_data()
+        super().__init__()
         self.__recipes_scored = self.__create_recipe_scored_table()
 
     def __create_recipe_scored_table(self):
         
-        recipes = self.__data_dict['recipe']
-        ingredients = self.__data_dict['ingredient']
-        items = self.__data_dict['recipe_items'] 
+        recipes = self._Data__data['recipe']
+        ingredients = self._Data__data['ingredient']
+        items = self._Data__data['recipe_items'] 
 
         recipes_scored = recipes.copy()
         joint1 = items[['ingredient_id', 'recipe_id']].join(ingredients[['Id', 'Score']].set_index('Id'), on="ingredient_id", how='left')
